@@ -21,3 +21,16 @@ models:
 
   - name: sales
     description: "Oliver Sales Semantic Layer"
+
+  - name: stg_employee_certifications
+    description: |
+      Staging model for employee certification data.
+      Extracts certification name, cost, and awarded date
+      from the JSON field in the source table.
+
+  - name: fact_certification
+    description: |
+      Employee Certification Fact Table.
+      The grain is one row per employee certification record.
+      Contains employee and date dimension keys,
+      certification name, and certification cost.
