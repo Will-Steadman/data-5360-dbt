@@ -28,6 +28,7 @@ models:
       - name: issue_type
         tests:
           - accepted_values:
+            arguments:
               values:
                 - "New Claim"
                 - "Claim Status"
@@ -44,5 +45,6 @@ models:
       - name: customer_key
         tests:
           - relationships:
+            arguments:
               to: ref('dim_customer') # the model you want to compare to
               field: customer_key # the field on the model you want to compare to
