@@ -26,16 +26,16 @@ models:
       Each record represents a call between a customer and an agent.
     columns:
       - name: issue_type
-        tests:
+        data_tests:
           - accepted_values:
-            arguments:
-              values:
-                - "New Claim"
-                - "Claim Status"
-                - "Policy Change"
-                - "Coverage Info"
-                - "Billing Issue"
-                - "Policy Renewal"
+              arguments:
+                values:
+                  - "New Claim"
+                  - "Claim Status"
+                  - "Policy Change"
+                  - "Coverage Info"
+                  - "Billing Issue"
+                  - "Policy Renewal"
   - name: fact_interaction
     description: |
       Customer Service Interaction Fact.
@@ -43,8 +43,8 @@ models:
       Each record represents a call between a customer and an agent on a given date.
     columns:
       - name: customer_key
-        tests:
+        data_tests:
           - relationships:
-            arguments:
-              to: ref('dim_customer') # the model you want to compare to
-              field: customer_key # the field on the model you want to compare to
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
