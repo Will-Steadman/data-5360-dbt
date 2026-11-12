@@ -1,0 +1,6 @@
+SELECT
+    CAMPAIGN_ID AS CAMPAIGNPM_KEY,
+    CAMPAIGN_ID,
+    CAMPAIGN_NAME,
+    CAMPAIGN_DISCOUNT
+FROM {{ source('ecoessentials_transactional', 'PROMOTIONAL_CAMPAIGN') }}
