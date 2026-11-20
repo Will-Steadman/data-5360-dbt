@@ -3,27 +3,74 @@ version: 2
 models:
   - name: dim_product
     description: "Eco Essentials product dimension."
+    columns:
+      - name: product_key
+        data_tests:
+          - unique
 
   - name: dim_campaignPM
     description: "Promotional campaign dimension from the transactional purchase system."
+    columns:
+      - name: campaignpm_key
+        data_tests:
+          - not_null
 
   - name: dim_email
     description: "Email dimension from Salesforce Marketing Cloud email events."
+    columns:
+      - name: email_key
+        data_tests:
+          - unique
 
   - name: dim_eventType
     description: "Marketing email event type dimension."
+    columns:
+      - name: event_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - "CLICK"
+                  - "OPEN"
+                  - "SENT"
 
   - name: dim_campaignSF
     description: "Marketing campaign dimension from Salesforce Marketing Cloud."
+    columns:
+      - name: campaignsf_key
+        data_tests:
+          - not_null
 
   - name: eco_dim_date
     description: "Shared date dimension used by sales and marketing facts."
+    columns:
+      - name: date_key
+        data_tests:
+          - unique
 
   - name: dim_user
     description: "Shared user dimension combining transactional customers and marketing subscribers."
+    columns:
+      - name: user_key
+        data_tests:
+          - unique
 
   - name: eco_fact_sales
     description: "Sales fact table containing one row per product purchased as part of an order."
+    columns:
+      - name: product_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: product_key
 
   - name: eco_fact_marketing
     description: "Marketing fact table containing one row per email event."
+    columns:
+      - name: user_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_user')
+                field: user_key
