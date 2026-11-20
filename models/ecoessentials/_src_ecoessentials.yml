@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: ecoessentials_transactional
+    database: GROUP4PROJECT
+    schema: ECOESSENTIALS_TRANSACTIONAL_DB
+    tables:
+      - name: CUSTOMER
+
+      - name: orders
+        identifier: ORDER
+        quoting:
+          identifier: true
+
+      - name: ORDER_LINE
+      - name: PRODUCT
+      - name: PROMOTIONAL_CAMPAIGN
+
+  - name: ecoessentials_marketing
+    database: GROUP4PROJECT
+    schema: ecoessentials_marketing
+    quoting:
+      schema: true
+      identifier: true
+    tables:
+      - name: marketing_emails

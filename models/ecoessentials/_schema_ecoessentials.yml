@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: "Eco Essentials product dimension."
+
+  - name: dim_campaignPM
+    description: "Promotional campaign dimension from the transactional purchase system."
+
+  - name: dim_email
+    description: "Email dimension from Salesforce Marketing Cloud email events."
+
+  - name: dim_eventType
+    description: "Marketing email event type dimension."
+
+  - name: dim_campaignSF
+    description: "Marketing campaign dimension from Salesforce Marketing Cloud."
+
+  - name: eco_dim_date
+    description: "Shared date dimension used by sales and marketing facts."
+
+  - name: dim_user
+    description: "Shared user dimension combining transactional customers and marketing subscribers."
+
+  - name: eco_fact_sales
+    description: "Sales fact table containing one row per product purchased as part of an order."
+
+  - name: eco_fact_marketing
+    description: "Marketing fact table containing one row per email event."
