@@ -9,15 +9,38 @@ models:
 
   - name: oliver_dim_employee
     description: "Oliver Employee Dimension"
+    columns:
+      - name: position
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - "Sales Associate"
+                  - "Stock Clerk"
+                  - "Manager"
+                  - "Cashier"
+                  - "Customer Service"
 
   - name: oliver_dim_product
     description: "Oliver Product Dimension"
+    columns:
+      - name: product_key
+        data_tests:
+          - unique
 
   - name: oliver_dim_store
     description: "Oliver Store Dimension"
 
   - name: fact_sales
     description: "Oliver Sales Fact"
+    columns:
+      - name: product_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('oliver_dim_product')
+                field: product_key
 
   - name: sales
     description: "Oliver Sales Semantic Layer"
